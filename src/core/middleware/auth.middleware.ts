@@ -17,7 +17,7 @@ export const isAuthenticatedUser = async (req: Request, res: Response, next: Nex
             return res.status(401).json({ message: "Token is not valid or it's expired" });
        return next(); 
     } catch (err) {
-        console.error(err); 
-        return res.status(401).json({ message: "Token is not valid or it's expired" });
+        
+        return res.status(401).json({ message: "Token not match error occured!" });
     }
 };

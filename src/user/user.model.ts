@@ -2,9 +2,9 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IUser extends Document {
   name: string;
-  email?: string;
-  password?: string;
-}
+  email: string;
+  password: string;
+} 
 
 const userSchema: Schema = new Schema({
   name: { 

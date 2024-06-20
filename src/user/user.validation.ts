@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Joi, { allow } from 'joi';
 import mongoose from 'mongoose';
-import * as userService from './user.services';
+import * as userService from './user.repo';
 
 
 

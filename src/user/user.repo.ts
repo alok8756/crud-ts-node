@@ -1,11 +1,7 @@
 import { IUser, User } from './user.model';
 const bcrypt = require('bcrypt');
 
-// Check if a user exists by ID
-export const existsById = async (id: string): Promise<boolean> => {
-  const userExists = await User.exists({ _id: id });
-  return !!userExists; 
-};
+
 
 // Add a new user
 export const addUser = async (userData: Partial<IUser>): Promise<IUser> => {
@@ -16,8 +12,19 @@ export const addUser = async (userData: Partial<IUser>): Promise<IUser> => {
 
 //login user
 export const loginUser = async (userData: Partial<IUser>): Promise<IUser | null> => {
-  const user = User.findOne({email: userData.email});
+  const user =  User.findOne({email: userData.email});
   return await user;
+};
+
+// List all users
+export const listUsers = async (): Promise<IUser[]> => {
+  return await User.find().exec();
+};
+
+// Check if a user exists by ID
+export const existsById = async (id: string): Promise<boolean> => {
+  const userExists = await User.exists({ _id: id });
+  return !!userExists; 
 };
 
 // Get a user by ID
@@ -35,7 +42,4 @@ export const deleteUserById = async (id: string): Promise<IUser | null> => {
   return await User.findByIdAndDelete(id).exec();
 };
 
-// List all users
-export const listUsers = async (): Promise<IUser[]> => {
-  return await User.find().exec();
-};
+
